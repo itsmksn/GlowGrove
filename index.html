@@ -1,1 +1,194 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>GlowGrove — головна</title>
 
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0e0f10;
+  --card: rgba(13,14,15,0.84);
+  --accent:#14d17a;
+  --accent2:#17b2b0;
+  --muted:#cfcfcf;
+  --radius:26px;
+  --maxw:1100px;
+  --hero-height:260px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,"Helvetica Neue",Arial;
+  background: var(--bg);
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,0.01), transparent 18%),
+    linear-gradient(135deg, rgba(255,255,255,0.006) 1px, transparent 1px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.005) 0 24px, transparent 24px 48px);
+  background-blend-mode: overlay, normal, normal;
+}
+.site-wrap{max-width:var(--maxw);margin:0 auto;padding: 0 18px 80px}
+.topbar{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background: rgba(0,0,0,0.35);border-bottom:1px solid rgba(255,255,255,0.02);position:sticky;top:0;z-index:60;backdrop-filter: blur(6px)}
+.topbar .brand{display:flex;align-items:center;gap:12px}
+.topbar .brand .top-icon{width:34px;height:34px;border-radius:8px;object-fit:cover;display:inline-block}
+.brand h1{font-size:16px;margin:0;font-weight:700;color:#fff}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{color:#ddd;text-decoration:none;font-weight:600;font-size:15px;padding:6px 8px;border-radius:6px}
+.nav a:hover{background:rgba(255,255,255,0.02)}
+.header{position:relative;height:var(--hero-height);display:flex;align-items:center;justify-content:center;overflow:visible;margin-bottom: 110px}
+.header::before{content:"";position:absolute;left:0;right:0;top:0;bottom:0;background:linear-gradient(180deg, rgba(0,0,0,0.26), rgba(0,0,0,0.48));z-index:0;pointer-events:none}
+.header .hero-overlay{position:absolute;left:50%;transform:translateX(-50%);bottom:-92px;width:920px;max-width:calc(100% - 36px);height:260px;background:linear-gradient(180deg, rgba(13,14,15,0.98), rgba(13,14,15,0.94));border-radius:var(--radius);z-index:2;pointer-events:none}
+.logo-wrap{z-index:1;text-align:center;pointer-events:none}
+.logo-text{font-family:'Press Start 2P',monospace;display:inline-block;color:#12e6a0;font-size:56px;line-height:1;letter-spacing:2px;text-shadow:1px 1px 0 rgba(0,0,0,0.6),2px 2px 0 rgba(0,0,0,0.55),3px 3px 0 rgba(0,0,0,0.5);transform-origin:center;opacity:0.12}
+.hero-card{position:absolute;left:50%;transform:translateX(-50%);bottom:-90px;width:900px;max-width:calc(100% - 36px);background:var(--card);border-radius:var(--radius);padding:34px;z-index:3;box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(20,209,122,0.04) inset;border:1px solid rgba(255,255,255,0.02)}
+.hero-row{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+.map-thumb{width:320px;height:200px;border-radius:12px;background:#222;background-size:cover;background-position:center;flex:0 0 320px;box-shadow: 0 10px 30px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.03)}
+.info{flex:1;min-width:220px}
+.server-address{font-weight:700;color:var(--accent);font-size:20px;word-break:break-word}
+.server-version{margin-top:6px;color:var(--muted);font-weight:500}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:20px;text-decoration:none;font-weight:700;box-shadow: 0 6px 18px rgba(0,0,0,0.55);border:0;cursor:pointer}
+.btn-primary{background:linear-gradient(180deg,var(--accent), #0fbf63);color:#042217;box-shadow: 0 8px 30px rgba(20,209,122,0.14)}
+.quick-links{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.quick-links .ql{flex:1;min-width:140px;text-align:center;background:#1a1b1c;padding:10px 12px;border-radius:12px;text-decoration:none;color:#eee;border:1px solid rgba(255,255,255,0.02)}
+.quick-links .ql:hover{transform:translateY(-3px);transition:all .18s ease}
+.main{margin-top:160px;padding:36px 0;color:var(--muted)}
+.card{background: rgba(255,255,255,0.02);border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,0.02);color:#e9e9e9;margin-bottom:18px}
+.card h2{color:#fff;margin-top:0}
+.footer{margin-top:30px;color:rgba(255,255,255,0.4);font-size:13px;padding:20px 0;text-align:center}
+@media (max-width:940px){.logo-text{font-size:44px}.hero-card{width:calc(100% - 36px);bottom:-80px;padding:22px}.map-thumb{width:100%;height:200px;flex:1 1 100%}.hero-row{flex-direction:column}.quick-links .ql{flex:1}.topbar{padding:0 12px}}
+@media (max-width:520px){.logo-text{font-size:28px}.hero-card{bottom:-70px;padding:16px}.btn{padding:10px 14px;font-size:14px}.header{height:180px;margin-bottom:80px}.main{margin-top:120px;padding:20px 0}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <img class="top-icon" src="media/icon.png" alt="GlowGrove icon" />
+    <h1>GlowGrove</h1>
+  </div>
+
+  <nav class="nav" aria-label="Головне меню">
+    <a href="#" onclick="(document.querySelector('#main-about')||document.querySelector('#main-content'))?.scrollIntoView({behavior:'smooth'});return false;">Головна</a>
+    <a href="https://sites.google.com/view/glow-grove/rules?authuser=0" target="_blank" rel="noopener">Правила</a>
+    <a href="https://sites.google.com/view/glow-grove/%D0%BC%D0%B0%D0%BF%D0%B0?authuser=0" target="_blank" rel="noopener">Мапа</a>
+    <a href="https://sites.google.com/view/glow-grove/%D0%BE%D1%81%D0%BE%D0%B1%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96?authuser=0" target="_blank" rel="noopener">Особливості</a>
+  </nav>
+</div>
+
+<header class="header" role="banner" style="background-image: url('hero-bg.jpg'); background-size:cover; background-position:center;">
+  <div class="logo-wrap">
+    <div class="logo-text" id="logoText">GlowGrove</div>
+  </div>
+
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="hero-card" role="region" aria-label="Інформація про сервер">
+    <div class="hero-row">
+      <div class="map-thumb" id="mapThumb" style="background-image:url('media/g1.png');" aria-hidden="true"></div>
+
+      <div class="info">
+        <div style="text-align:center;margin-bottom:6px;color:var(--muted);font-size:13px">1.21.5</div>
+        <div style="text-align:center;margin-bottom:8px"><strong style="font-size:18px">GlowGrove</strong></div>
+        <p style="margin:0 0 8px;color:var(--muted)">GlowGrove — це затишний сервер, створений mksn для спільного виживання у ванільному Minecraft із доповненнями, що не дадуть тобі нудьгувати. Ласкаво просимо на сервер!</p>
+        <div style="display:flex;align-items:center;justify-content:center;gap:24px;margin-top:10px;flex-wrap:wrap">
+          <div style="text-align:center;min-width:220px">
+            <div class="server-address">glowgrove.playmine.de</div>
+            <div class="server-version">Версія Java 1.21.5, без модів</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <a class="btn btn-primary" href="https://forms.gle/rdmeFLpps8BJFRNv8" target="_blank" rel="noopener">Стати учасником</a>
+          </div>
+        </div>
+        <div class="quick-links" style="margin-top:18px">
+          <a class="ql" href="https://sites.google.com/view/glow-grove/rules?authuser=0" target="_blank" rel="noopener">Правила</a>
+          <a class="ql" href="https://sites.google.com/view/glow-grove/%D0%BC%D0%B0%D0%BF%D0%B0?authuser=0" target="_blank" rel="noopener">Мапа</a>
+          <a class="ql" href="https://sites.google.com/view/glow-grove/%D0%BE%D1%81%D0%BE%D0%B1%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96?authuser=0" target="_blank" rel="noopener">Особливості</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="site-wrap">
+  <main class="main" id="main-content" role="main">
+<section class="features" style="display:grid;gap:24px;margin-top:40px">
+  <div class="feature-card" style="display:flex;flex-wrap:wrap;gap:20px;background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,0.05);box-shadow:0 10px 30px rgba(0,0,0,0.5)">
+    <img src="media/achievements.png" alt="1153 нові досягнення" style="flex:0 0 320px;object-fit:cover;width:320px;height:200px">
+    <div style="padding:20px;flex:1;min-width:220px">
+      <h2 style="margin-top:0;color:#fff">1153 нові досягнення!</h2>
+      <p>На сервері встановлений відомий datapack BlazeandCave's Advancements Pack, що додає у гру 1153 нових досягнення!</p>
+    </div>
+  </div>
+
+  <div class="feature-card" style="display:flex;flex-wrap:wrap;gap:20px;background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,0.05);box-shadow:0 10px 30px rgba(0,0,0,0.5)">
+    <img src="media/custom-skin.png" alt="Кастомні скіни" style="flex:0 0 320px;object-fit:cover;width:320px;height:200px">
+    <div style="padding:20px;flex:1;min-width:220px">
+      <h2 style="margin-top:0;color:#fff">Кастомні скіни</h2>
+      <p>На сервері є плагін SkinRestorer, що дозволяє змінювати скіни на будь-які інші!</p>
+      <pre style="background:#1a1b1c;padding:10px;border-radius:8px;overflow-x:auto;font-size:13px">
+/skin set [нік] — змінити скин на скин іншого гравця
+/skin url [адреса] — змінити скин на скин із зображення (.png)
+/skin clear — повернути стандартний скин
+      </pre>
+    </div>
+  </div>
+
+  <div class="feature-card" style="display:flex;flex-wrap:wrap;gap:20px;background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,0.05);box-shadow:0 10px 30px rgba(0,0,0,0.5)">
+    <div style="display:flex;flex-direction:column;gap:8px;flex:0 0 320px">
+      <img src="media/particles1.png" alt="Додаткові частинки 1" style="object-fit:cover;width:320px;height:96px">
+      <img src="media/particles2.png" alt="Додаткові частинки 2" style="object-fit:cover;width:320px;height:96px">
+    </div>
+    <div style="padding:20px;flex:1;min-width:220px">
+      <h2 style="margin-top:0;color:#fff">Додаткові частинки</h2>
+      <p>На сервері встановлений плагін, що додає нові атмосферні частинки. Якщо у вас лаги, можна вимкнути ефекти командою:</p>
+      <pre style="background:#1a1b1c;padding:10px;border-radius:8px;overflow-x:auto;font-size:13px">
+/aurora toggle
+      </pre>
+    </div>
+  </div>
+</section>
+
+    <div class="footer">© GlowGrove — Створено mksn · <span style="opacity:0.8">Адреса сервера: glowgrove.playmine.de</span></div>
+  </main>
+</div>
+
+<script>
+// Runtime self-test to ensure template literals behave as expected (simple dev check)
+(function testTemplate(){
+  const t = (a,b)=>`rotateX(${a}deg) rotateY(${b}deg) translateZ(0)`;
+  console.assert(t(1,2).includes('rotateX(1deg)') && t(1,2).includes('rotateY(2deg)'), 'Template literal failed');
+})();
+
+(function(){
+  const header = document.querySelector('.header');
+  const logo = document.getElementById('logoText');
+  if(!header || !logo) return;
+  header.addEventListener('pointermove', e=>{
+    const rect = header.getBoundingClientRect();
+    const cx = rect.left + rect.width/2;
+    const cy = rect.top + rect.height/2;
+    const dx = (e.clientX - cx) / rect.width;
+    const dy = (e.clientY - cy) / rect.height;
+    const rx = Math.max(-6, Math.min(6, dx * 12));
+    const ry = Math.max(-6, Math.min(6, dy * -12));
+    logo.style.transform = `rotateX(${ry}deg) rotateY(${rx}deg) translateZ(0)`;
+  });
+  header.addEventListener('pointerleave', ()=>{logo.style.transform = 'rotateX(0) rotateY(0) translateZ(0)'});
+})();
+(function(){
+  const map = document.getElementById('mapThumb');
+  if(map && (!map.style.backgroundImage || map.style.backgroundImage.includes('g1.png')===false)){
+    map.style.backgroundImage = "url('media/g1.png')";
+  }
+})();
+</script>
+
+</body>
+</html>
